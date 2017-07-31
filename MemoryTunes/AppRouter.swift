@@ -28,7 +28,13 @@
  * THE SOFTWARE.
  */
 
-import UIKit
+import ReSwift
+
+enum RoutingDestination: String {
+  case menu = "MenuTableViewController"
+  case game = "GameViewController"
+  case categories = "CategoriesTableViewController"
+}
 
 final class AppRouter {
   

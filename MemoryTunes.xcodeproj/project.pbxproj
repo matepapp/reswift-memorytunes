@@ -180,11 +180,11 @@
 				3FA674411E3E885700129D0B /* Reducers */,
 				3FA6743E1E3E879900129D0B /* State */,
 				3F8882681E3B9A70009D6A6E /* AppDelegate.swift */,
+				3F257E1D1E40A2CB00DF8465 /* AppRouter.swift */,
 				3F88826C1E3B9A70009D6A6E /* Main.storyboard */,
 				3F8882711E3B9A70009D6A6E /* LaunchScreen.storyboard */,
 				3F88826F1E3B9A70009D6A6E /* Assets.xcassets */,
 				3F8882741E3B9A70009D6A6E /* Info.plist */,
-				3F257E1D1E40A2CB00DF8465 /* AppRouter.swift */,
 			);
 			path = MemoryTunes;
 			sourceTree = "<group>";
@@ -309,6 +309,7 @@
 				TargetAttributes = {
 					3F8882641E3B9A70009D6A6E = {
 						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = E6SA5UUA26;
 						ProvisioningStyle = Automatic;
 					};
 					3F8882781E3B9A71009D6A6E = {
@@ -631,6 +632,7 @@
 			baseConfigurationReference = 910A7D01D1033A7FF33CEE39 /* Pods-MemoryTunes.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = E6SA5UUA26;
 				INFOPLIST_FILE = MemoryTunes/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.raywenderlich.MemoryTunes;
@@ -644,6 +646,7 @@
 			baseConfigurationReference = 0F378129D768A1F646389832 /* Pods-MemoryTunes.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = E6SA5UUA26;
 				INFOPLIST_FILE = MemoryTunes/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.raywenderlich.MemoryTunes;

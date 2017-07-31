@@ -27,3 +27,15 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
+import ReSwift
+
+func appReducer(action: Action, state: AppState?) -> AppState {
+  return AppState(routingState: routingReducer(action: action, state: state?.routingState))
+}
+
+func routingReducer(action: Action, state: RoutingState?) -> RoutingState {
+  let state = state ?? RoutingState()
+  
+  return state
+}
