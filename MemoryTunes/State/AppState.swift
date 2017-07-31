@@ -32,5 +32,5 @@ import ReSwift
 
 struct AppState: StateType {
   var routingState: RoutingState
-  
+  var menuState: MenuState
 }

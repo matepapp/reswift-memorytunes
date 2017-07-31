@@ -27,3 +27,9 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
+import ReSwift
+
+func menuReducer(action: Action, state: MenuState?) -> MenuState {
+  return MenuState()
+}
