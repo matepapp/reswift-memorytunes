@@ -28,12 +28,45 @@
  * THE SOFTWARE.
  */
 
-import UIKit
+import ReSwift
 
 final class GameViewController: UIViewController {
   
   @IBOutlet weak var collectionView: UICollectionView!
   @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
+  
+  var collectionDataSource: CollectionDataSource<CardCollectionViewCell, MemoryCard>?
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    
+    store.dispatch(fetchTunes)
+    loadingIndicator.hidesWhenStopped = true
+    
+    collectionDataSource = CollectionDataSource(cellIdentifier: "CardCell", models: []) { cell, model in
+      cell.configureCell(with: model)
+      return cell
+    }
+    
+    collectionView.dataSource = collectionDataSource
+    collectionView.delegate = self
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    
+    store.subscribe(self) { subscription in
+      subscription.select { appState in
+        appState.gameState
+      }
+    }
+  }
+  
+  override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
+    
+    store.unsubscribe(self)
+  }
   
   fileprivate func showGameFinishedAlert() {
     let alertController = UIAlertController(title: "Congratulations!",
@@ -44,6 +77,20 @@ final class GameViewController: UIViewController {
     alertController.addAction(defaultAction)
     
     present(alertController, animated: true, completion: nil)
+  }
+}
+
+extension GameViewController: StoreSubscriber {
+  func newState(state: GameState) {
+    collectionDataSource?.models = state.memoryCards
+    collectionView.reloadData()
+    
+    state.showLoading ? loadingIndicator.startAnimating() : loadingIndicator.stopAnimating()
+    
+    if state.gameFinished {
+      showGameFinishedAlert()
+      store.dispatch(fetchTunes)
+    }
   }
 }
 

@@ -34,4 +34,5 @@ struct AppState: StateType {
   var routingState: RoutingState
   var menuState: MenuState
   var categoriesState: CategoriesState
+  var gameState: GameState
 }
