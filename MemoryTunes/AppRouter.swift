@@ -43,5 +43,29 @@ final class AppRouter {
   init(window: UIWindow) {
     navigationController = UINavigationController()
     window.rootViewController = navigationController
+
+    store.subscribe(self) {
+      $0.select({ (appState) -> RoutingState in
+        appState.routingState
+      })
+    }
+  }
+  
+  fileprivate func pushViewController(identifier: String, animated: Bool) {
+    let viewController = instantiateViewController(identifier: identifier)
+    navigationController.pushViewController(viewController, animated: animated)
+  }
+  
+  fileprivate func instantiateViewController(identifier: String) -> UIViewController {
+    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+    return storyboard.instantiateViewController(withIdentifier: identifier)
+  }
+}
+
+extension AppRouter: StoreSubscriber {
+  func newState(state: RoutingState) {
+    let shouldAnimate = navigationController.topViewController != nil
+    
+    pushViewController(identifier: state.navigationState.rawValue, animated: shouldAnimate)
   }
 }
