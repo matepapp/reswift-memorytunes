@@ -33,4 +33,5 @@ import ReSwift
 struct AppState: StateType {
   var routingState: RoutingState
   var menuState: MenuState
+  var categoriesState: CategoriesState
 }
