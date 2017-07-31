@@ -36,9 +36,3 @@ func appReducer(action: Action, state: AppState?) -> AppState {
     menuState: menuReducer(action: action, state: state?.menuState)
   )
 }
-
-func routingReducer(action: Action, state: RoutingState?) -> RoutingState {
-  let state = state ?? RoutingState()
-  
-  return state
-}
